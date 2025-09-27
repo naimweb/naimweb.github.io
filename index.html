@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Naim Portfolio</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<!-- AOS CSS -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
 <style>
 :root {
@@ -29,10 +28,44 @@ body.dark{
   background-color: var(--bg-dark);
   color: var(--text-dark);
 }
-header{text-align:center;padding:80px 20px 40px;position:relative;}
+
+/* ------------------- INTRO ANIMATION ------------------- */
+#intro-screen {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: #0f172a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  transition: opacity 1s ease;
+}
+.intro {
+  font-size: 2.2rem;
+  font-weight: bold;
+  border-right: 3px solid #00ffcc;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+  color: white;
+  font-family: "Poppins", sans-serif;
+  animation: typing 3s steps(30, end) forwards, blink 0.7s infinite;
+}
+@keyframes typing {from { width: 0; } to { width: 350px; }}
+@keyframes blink {50% { border-color: transparent; }}
+
+/* ------------------- HEADER ------------------- */
+header{
+  text-align:center;padding:80px 20px 40px;position:relative;
+  background: linear-gradient(135deg,#38bdf8,#0ea5e9);
+  color:white;
+  border-bottom-left-radius:30px;
+  border-bottom-right-radius:30px;
+}
 header h1{font-size:2.5rem;}
-header h1 span{color: var(--accent);}
-header .animated-text{margin-top:10px;color:gray;font-size:1.2rem;height:30px; overflow:hidden; display:inline-block;}
+header h1 span{color: yellow;}
+header .animated-text{margin-top:10px;font-size:1.2rem;height:30px; overflow:hidden; display:inline-block;}
 
 /* Animated words */
 .animated-word{
@@ -46,7 +79,6 @@ header .animated-text{margin-top:10px;color:gray;font-size:1.2rem;height:30px; o
 .animated-word:nth-child(3){animation-delay:1s;}
 .animated-word:nth-child(4){animation-delay:1.5s;}
 .animated-word:nth-child(5){animation-delay:2s;}
-
 @keyframes wordFade{
   0% {opacity:0; transform:translateY(20px);}
   20% {opacity:1; transform:translateY(0);}
@@ -64,7 +96,7 @@ header .animated-text{margin-top:10px;color:gray;font-size:1.2rem;height:30px; o
 .toggle:hover{transform:scale(1.1);}
 
 /* Navigation */
-nav{display:flex;justify-content:center;gap:25px;margin-bottom:50px;}
+nav{display:flex;justify-content:center;gap:25px;margin:30px 0;}
 nav a{text-decoration:none;font-weight:600;color:inherit;transition:color 0.3s;}
 nav a:hover{color:var(--accent);}
 
@@ -97,23 +129,14 @@ body.dark .card{background-color:var(--card-bg-dark);}
 }
 
 /* Skills */
-.skills .skill{
-  margin-bottom:20px;
-}
-.skills .skill-name{
-  font-weight:600;margin-bottom:5px;
-}
+.skills .skill{margin-bottom:20px;}
+.skills .skill-name{font-weight:600;margin-bottom:5px;}
 .skills .skill-bar{
   width:100%; height:15px; background:rgba(0,0,0,0.1); border-radius:8px; overflow:hidden;
 }
 .skills .skill-fill{
   height:100%; width:0%; background:var(--accent); border-radius:8px; transition: width 1.5s ease;
 }
-
-/* Testimonials */
-.testimonials{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;}
-.testimonials .card p{font-style:italic;}
-.testimonials .card h4{margin-top:10px; text-align:right; font-weight:600;}
 
 /* Contact */
 .contact-icons{display:flex;justify-content:center;align-items:center;gap:80px;flex-wrap:wrap;}
@@ -126,193 +149,193 @@ body.dark .card{background-color:var(--card-bg-dark);}
 }
 .contact-form button{
   padding:12px 25px; background:var(--accent); color:white; border:none; border-radius:8px; cursor:pointer;
-  font-weight:bold; transition:transform 0.3s;
+  font-weight:bold; transition:transform 0.3s, background 0.3s;
 }
-.contact-form button:hover{transform:scale(1.05);}
+.contact-form button:hover{transform:scale(1.05);background:#0ea5e9;}
 
 /* Resume Button */
-.btn{display:inline-block;padding:12px 25px;background:var(--accent);color:white;border-radius:8px;font-weight:bold;text-decoration:none;transition:transform 0.3s;}
-.btn:hover{transform:scale(1.05);}
+.btn{display:inline-block;padding:12px 25px;background:var(--accent);color:white;border-radius:8px;font-weight:bold;text-decoration:none;transition:0.3s;}
+.btn:hover{transform:scale(1.05); box-shadow:0 0 15px var(--accent);}
+.resume-btn{margin-top:20px;float:right;margin-right:20px;}
 
 /* Footer */
 footer{text-align:center;padding:20px 0;margin-top:50px;color:gray;}
+.dev{color:orange;font-size:20px;}
 
-/* Responsive */
-@media(max-width:768px){
-  .profile img{width:140px;height:140px;}
-  .contact-icons{gap:50px;}
+/* Scroll to Top */
+#topBtn{
+  position:fixed;bottom:30px;right:30px;background:var(--accent);color:white;
+  border:none;padding:12px 18px;border-radius:50%;font-size:18px;cursor:pointer;
+  display:none;z-index:1000;transition:0.3s;
 }
-@media(max-width:480px){
-  nav{flex-direction:column;gap:15px;margin-bottom:30px;}
-  .profile img{width:120px;height:120px;}
-}
-#demo {font-size:25px;}
-span {
-  color: orange;
-  font-size:20px;
-  width:10px;
-  height:10px;
-
-}
+#topBtn:hover{background:#0ea5e9;transform:scale(1.1);}
 </style>
 </head>
 <body>
 
-<!-- Dark Mode Toggle -->
-<button class="toggle" onclick="toggleMode()">
-  <i id="mode-icon" class="fa-regular fa-moon"></i>
-</button>
-
-<!-- Header -->
-<header>
-  <h1>Hello, I'm <span>Naim</span></h1>
-  <p class="animated-text">
-    <span class="animated-word">Frontend</span>
-    <span class="animated-word">Developer</span> | 
-    <span class="animated-word">UI</span>
-    <span class="animated-word">Designer</span> | 
-    <span class="animated-word">Freelancer</span>
-  </p>
-  <a href="Naim_Resume.pdf" download class="btn" style="margin-top:15px; display:inline-block;">Download Resume</a>
-</header>
-
-<!-- Navigation -->
-<nav>
-  <a href="#about">About</a>
-  <a href="#projects">Projects</a>
-  <a href="#skills">Skills</a>
-  <a href="#testimonials">Testimonials</a>
-  <a href="#contact">Contact</a>
-</nav>
-
-<!-- Profile Image -->
-<div class="profile">
-  <img src="naim.jpg" alt="Naim Profile Picture">
+<!-- Intro Screen -->
+<div id="intro-screen">
+  <div class="intro">Hi, I am Naim
+  | Web <div>Developer 💻</div></div>
 </div>
 
-<!-- About Section -->
-<section id="about" class="section" data-aos="fade-up" data-aos-duration="1000">
-  <h2>About Me</h2>
-  <div class="card">
-    <p id ="demo">
-      Hello! I am <strong>Naim Shek</strong>, a passionate <strong>Frontend Developer</strong> and <strong>UI/UX Designer</strong> with strong dedication to building visually appealing and functional web applications. I have experience in <strong>HTML, CSS, JS, React.js</strong> and responsive designs.
+<!-- Main Content -->
+<div id="main-content" style="display:none;">
+
+  <!-- Dark Mode Toggle -->
+  <button class="toggle" onclick="toggleMode()"><i id="mode-icon" class="fa-regular fa-moon"></i></button>
+
+  <!-- Header -->
+  <header>
+    <h1>Hello, I'm <span>Naim</span></h1>
+    <p class="animated-text">
+      <span class="animated-word">Frontend</span>
+      <span class="animated-word">Developer</span>
+      <span class="animated-word">UI</span>
+      <span class="animated-word">Designer</span>
+      <span class="animated-word">Freelancer</span>
     </p>
-  </div>
-</section>
+    <a href="Naim_Resume.pdf" download class="btn resume-btn">Download Resume</a>
+  </header>
 
-<!-- Projects -->
-<section id="projects" class="section">
-  <h2>Projects</h2>
-  <div class="projects">
-    <div class="card" data-aos="fade-up">
-      <h3>Portfolio Website</h3>
-      <p>Responsive personal portfolio with animations.</p>
-      <a href="https://github.com/naimweb/portfolio" target="_blank" class="btn">GitHub</a>
-      <a href="#" target="_blank" class="btn">Live Demo</a>
-    </div>
-    <div class="card" data-aos="fade-up" data-aos-delay="100">
-      <h3>To-Do App</h3>
-      <p>Task management app using HTML, CSS & JS</p>
-      <a href="https://github.com/naimweb/todo" target="_blank" class="btn">GitHub</a>
-      <a href="#" target="_blank" class="btn">Live Demo</a>
-    </div>
-    <div class="card" data-aos="fade-up" data-aos-delay="200">
-      <h3>Blog Platform</h3>
-      <p>Basic blog with admin panel using JS</p>
-      <a href="https://github.com/naimweb/blog" target="_blank" class="btn">GitHub</a>
-      <a href="#" target="_blank" class="btn">Live Demo</a>
-    </div>
-  </div>
-</section>
+  <!-- Navigation -->
+  <nav>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+  </nav>
 
-<!-- Skills -->
-<section id="skills" class="section">
-  <h2>My Skills</h2>
-  <div class="skills">
-    <div class="skill">
-      <div class="skill-name">HTML</div>
-      <div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div>
-    </div>
-    <div class="skill">
-      <div class="skill-name">CSS</div>
-      <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
-    </div>
-    <div class="skill">
-      <div class="skill-name">JavaScript</div>
-      <div class="skill-bar"><div class="skill-fill" style="width:100%"></div></div>
-    </div>
-    <div class="skill">
-      <div class="skill-name">React.js</div>
-      <div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div>
-    </div>
-  </div>
-</section>
+  <!-- Profile -->
+  <div class="profile"><img src="naim.jpg" alt="Naim Profile Picture"></div>
 
-<!-- Testimonials -->
-<section id="testimonials" class="section">
-  <h2>Testimonials</h2>
-  <div class="testimonials">
-    <div class="card" data-aos="fade-up">
-      <p>"Naim delivered the project on time with amazing quality. Highly recommended!"</p>
-      <h4>- Client A</h4>
+  <!-- About -->
+  <section id="about" class="section" data-aos="fade-up">
+    <h2>About Me</h2>
+    <div class="card">
+      <p>Hello! I’m <strong>Naim Shek</strong>, a passionate <strong>Frontend Developer</strong> and <strong>UI/UX Designer</strong>.
+      I love crafting modern, responsive, and user-friendly web applications that combine creativity with functionality.</p>
     </div>
-    <div class="card" data-aos="fade-up" data-aos-delay="100">
-      <p>"Great communication and exceptional front-end development skills."</p>
-      <h4>- Client B</h4>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- Contact -->
-<section id="contact" class="section">
-  <h2>Contact Me</h2>
-  <div class="card" style="text-align:center;" data-aos="fade-up">
-    <div class="contact-icons">
-      <a href="https://www.facebook.com/share/19rfuzNSrr" target="_blank"><i class="fab fa-facebook"></i></a>
-      <i class="fas fa-seedling" style="color:var(--accent); font-size:40px;"></i>
-      <a href="https://github.com/naimweb" target="_blank"><i class="fab fa-github"></i></a>
-      <a href="mailto:naim@example.com"><i class="fas fa-envelope"></i></a>
-      <a href="https://www.linkedin.com/in/naimweb" target="_blank"><i class="fab fa-linkedin"></i></a>
+  <!-- Projects -->
+  <section id="projects" class="section">
+    <h2>Projects</h2>
+    <div class="projects">
+      <div class="card" data-aos="fade-up">
+        <h3>Portfolio Website</h3>
+        <p>Responsive personal portfolio with animations.</p>
+        <a href="https://github.com/naimweb/portfolio" target="_blank" class="btn">GitHub</a>
+        <a href="#" target="_blank" class="btn">Live Demo</a>
+      </div>
+      <div class="card" data-aos="fade-up" data-aos-delay="100">
+        <h3>To-Do App</h3>
+        <p>Task management app using HTML, CSS & JS</p>
+        <a href="https://github.com/naimweb/todo" target="_blank" class="btn">GitHub</a>
+        <a href="#" target="_blank" class="btn">Live Demo</a>
+      </div>
+      <div class="card" data-aos="fade-up" data-aos-delay="200">
+        <h3>Weather App</h3>
+        <p>Real-time weather updates using JavaScript API.</p>
+        <a href="https://github.com/naimweb/weather-app" target="_blank" class="btn">GitHub</a>
+        <a href="#" target="_blank" class="btn">Live Demo</a>
+      </div>
+      <div class="card" data-aos="fade-up" data-aos-delay="300">
+        <h3>Calculator</h3>
+        <p>Responsive calculator with basic arithmetic functions.</p>
+        <a href="https://github.com/naimweb/calculator" target="_blank" class="btn">GitHub</a>
+        <a href="#" target="_blank" class="btn">Live Demo</a>
+      </div>
+      <div class="card" data-aos="fade-up" data-aos-delay="400">
+        <h3>Landing Page</h3>
+        <p>Modern landing page template with animations and responsive design.</p>
+        <a href="https://github.com/naimweb/landing-page" target="_blank" class="btn">GitHub</a>
+        <a href="#" target="_blank" class="btn">Live Demo</a>
+      </div>
     </div>
-    <div class="contact-form" style="margin-top:30px;">
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Your Email" required>
-      <textarea placeholder="Your Message" rows="4"></textarea>
-      <button type="submit">Send Message</button>
-    </div>
-  </div>
-</section>
+  </section>
 
-<p style ="text-align:center">
-  &copy;2025 Naim Shek. All Rights Reserved <span>'dev'</span>
-</p>
+  <!-- Skills -->
+  <section id="skills" class="section">
+    <h2>My Skills</h2>
+    <div class="skills">
+      <div class="skill"><div class="skill-name">HTML</div><div class="skill-bar"><div class="skill-fill" data-width="95%"></div></div></div>
+      <div class="skill"><div class="skill-name">CSS</div><div class="skill-bar"><div class="skill-fill" data-width="90%"></div></div></div>
+      <div class="skill"><div class="skill-name">JavaScript</div><div class="skill-bar"><div class="skill-fill" data-width="100%"></div></div></div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="section">
+    <h2>Contact Me</h2>
+    <div class="card" style="text-align:center;" data-aos="fade-up">
+      <div class="contact-icons">
+        <a href="https://www.facebook.com/naimislam2007" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://github.com/naimweb" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="mailto:naimislmmd1020@gmail.com">
+    <i class="fas fa-envelope"></i>
+</a>
+        <a href="https://www.linkedin.com/in/naim-web-755665354" target="_blank"><i class="fab fa-linkedin"></i></a>
+      </div>
+      <form class="contact-form" onsubmit="return validateForm()">
+        <input type="text" id="name" placeholder="Your Name" required>
+        <input type="email" id="email" placeholder="Your Email" required>
+        <textarea id="msg" placeholder="Your Message" rows="4" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>&copy;2025 Naim Shek. All Rights Reserved <span class="dev">dev</span></footer>
+  <button id="topBtn" onclick="topFunction()"><i class="fas fa-arrow-up"></i></button>
+
+</div>
 
 <script>
-function toggleMode(){
-  document.body.classList.toggle('dark');
-  const icon=document.getElementById('mode-icon');
-  if(document.body.classList.contains('dark')){
-    icon.classList.remove('fa-moon');
-    icon.classList.add('fa-sun');
-  } else {
-    icon.classList.remove('fa-sun');
-    icon.classList.add('fa-moon');
+  // Intro hide after 4s
+  setTimeout(() => {
+    document.getElementById("intro-screen").style.opacity = "0";
+    setTimeout(() => {
+      document.getElementById("intro-screen").style.display = "none";
+      document.getElementById("main-content").style.display = "block";
+    }, 1000);
+  }, 4000);
+
+  function toggleMode(){
+    document.body.classList.toggle('dark');
+    const icon=document.getElementById('mode-icon');
+    icon.classList.toggle('fa-moon');
+    icon.classList.toggle('fa-sun');
   }
-}
 
-// Skills animation
-window.addEventListener('load', ()=>{
-  document.querySelectorAll('.skill-fill').forEach(el=>{
-    el.style.width = el.style.width;
+  // Skills animation
+  window.addEventListener('load', ()=>{
+    document.querySelectorAll('.skill-fill').forEach(el=>{
+      let finalWidth = el.getAttribute("data-width");
+      setTimeout(()=> el.style.width = finalWidth, 500);
+    });
   });
-});
-</script>
 
-<!-- AOS JS -->
+  // Scroll to Top Button
+  const topBtn=document.getElementById("topBtn");
+  window.onscroll=function(){
+    if(document.body.scrollTop>200 || document.documentElement.scrollTop>200){
+      topBtn.style.display="block";
+    } else {topBtn.style.display="none";}
+  };
+  function topFunction(){window.scrollTo({top:0,behavior:'smooth'});}
+
+  // Contact Form Validation
+  function validateForm(){
+    let name=document.getElementById("name").value.trim();
+    let email=document.getElementById("email").value.trim();
+    let msg=document.getElementById("msg").value.trim();
+    if(name==""||email==""||msg==""){alert("Please fill all fields.");return false;}
+    alert("Message sent successfully!");
+    return true;
+  }
+</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-<script>
-  AOS.init({duration: 1000, once: true});
-</script>
-
+<script>AOS.init({duration:1000,once:true});</script>
 </body>
 </html>
