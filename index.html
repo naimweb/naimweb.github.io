@@ -1,67 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
- <head>
-   <meta charset="UTF-8" />
-   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-   <title>DevFolio - Portfolio</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="style.css">  
- </head>  
- <body>  
-   <button class="toggle" onclick="document.body.classList.toggle('dark')">  
-     Toggle Mode  
-   </button>
-   <header>
-     <h1>Hello Naim, I'm <span>DevFolio</span></h1>
-     <p>Frontend Developer | UI Designer | Freelancer</p>
-   </header>
-   <nav>
-     <a href="#about">About</a>
-     <a href="#projects">Projects</a>
-     <a href="#contact">Contact</a>
-   </nav>
-   <img src="naim.jpg" alt="jpg">
-   <section id="about" class="section">
- <h2>About Me</h2>
- <div class="card">
-   <p>I am a passionate web developer who loves building interactive and modern web applications. Skilled in HTML, CSS, JavaScript, and React.js</p>
- </div>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Naim Portfolio</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<!-- AOS CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Dark Mode Toggle -->
+<button class="toggle" onclick="toggleMode()">
+  <i id="mode-icon" class="fa-regular fa-moon"></i>
+</button>
+
+<!-- Header -->
+<header>
+  <h1>Hello, I'm <span>Naim</span></h1>
+  <p class="animated-text">
+    <span class="animated-word">Frontend</span>
+    <span class="animated-word">Developer</span> | 
+    <span class="animated-word">UI</span>
+    <span class="animated-word">Designer</span> | 
+    <span class="animated-word">Freelancer</span>
+  </p>
+  <a href="Naim_Resume.pdf" download class="btn" style="margin-top:15px; display:inline-block;">Download Resume</a>
+</header>
+
+<!-- Navigation -->
+<nav>
+  <a href="#about">About</a>
+  <a href="#projects">Projects</a>
+  <a href="#skills">Skills</a>
+  <a href="#testimonials">Testimonials</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<!-- Profile Image -->
+<div class="profile">
+  <img src="naim.jpg" alt="Naim Profile Picture">
+</div>
+
+<!-- About Section -->
+<section id="about" class="section" data-aos="fade-up" data-aos-duration="1000">
+  <h2>About Me</h2>
+  <div class="card">
+    <p id ="demo">
+      Hello! I am <strong>Naim Shek</strong>, a passionate <strong>Frontend Developer</strong> and <strong>UI/UX Designer</strong> with strong dedication to building visually appealing and functional web applications. I have experience in <strong>HTML, CSS, JS, React.js</strong> and responsive designs.
+    </p>
+  </div>
 </section>
 
+<!-- Projects -->
 <section id="projects" class="section">
- <h2>Projects</h2>
- <div class="projects">
-   <div class="card">
-     <h3>Portfolio Website</h3>
-     <p>Responsive and animated personal portfolio site.</p>
-   </div>
-   <div class="card">
-     <h3>To-Do App</h3>
-     <p>A task manager app built using HTML, CSS & JS.</p>
-   </div>
-   <div class="card">
-     <h3>Blog Platform</h3>
-     <p>Basic blog with admin panel using JS.</p>
-   </div>
- </div>
-</section>
-
-<section id="contact" class="section">
-  <h2>Contact Me</h2>
-  <div class="card" style="text-align:center;">
-    <div class="contact-icons">
-      <a href="https://www.facebook.com/share/19rfuzNSrr" target="_blank">
-        <i class="fab fa-facebook"></i>
-      </a>
-      <i class="fas fa-seedling" style="color:var(--accent); font-size:240px;"></i>
-      <a href="https://github.com/naimweb" target="_blank">
-        <i class="fab fa-github"></i>
-      </a>
+  <h2>Projects</h2>
+  <div class="projects">
+    <div class="card" data-aos="fade-up">
+      <h3>Portfolio Website</h3>
+      <p>Responsive personal portfolio with animations.</p>
+      <a href="https://github.com/naimweb/portfolio" target="_blank" class="btn">GitHub</a>
+      <a href="#" target="_blank" class="btn">Live Demo</a>
+    </div>
+    <div class="card" data-aos="fade-up" data-aos-delay="100">
+      <h3>To-Do App</h3>
+      <p>Task management app using HTML, CSS & JS</p>
+      <a href="https://github.com/naimweb/todo" target="_blank" class="btn">GitHub</a>
+      <a href="#" target="_blank" class="btn">Live Demo</a>
+    </div>
+    <div class="card" data-aos="fade-up" data-aos-delay="200">
+      <h3>Blog Platform</h3>
+      <p>Basic blog with admin panel using JS</p>
+      <a href="https://github.com/naimweb/blog" target="_blank" class="btn">GitHub</a>
+      <a href="#" target="_blank" class="btn">Live Demo</a>
     </div>
   </div>
 </section>
 
+<!-- Skills -->
+<section id="skills" class="section">
+  <h2>My Skills</h2>
+  <div class="skills">
+    <div class="skill">
+      <div class="skill-name">HTML</div>
+      <div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div>
+    </div>
+    <div class="skill">
+      <div class="skill-name">CSS</div>
+      <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
+    </div>
+    <div class="skill">
+      <div class="skill-name">JavaScript</div>
+      <div class="skill-bar"><div class="skill-fill" style="width:100%"></div></div>
+    </div>
+    <div class="skill">
+      <div class="skill-name">React.js</div>
+      <div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div>
+    </div>
+  </div>
+</section>
 
- </body>
-</html>
-			
+<!-- Testimonials -->
+<section id="testimonials" class="section">
+  <h2>Testimonials</h2>
+  <div class="testimonials">
+    <div class="card" data-aos="fade-up">
+      <p>"Naim delivered the project on time with amazing quality. Highly recommended!"</p>
+      <h4>- Client A</h4>
+    </div>
+    <div class="card" data-aos="fade-up" data-aos-delay="100">
+      <p>"Great communication and exceptional front-end development skills."</p>
+      <h4>- Client B</h4>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="section">
+  <h2>Contact Me</h2>
+  <div class="card" style="text-align:center;" data-aos="fade-up">
+    <div class="contact-icons">
+      <a href="https://www.facebook.com/share/19rfuzNSrr" target="_blank"><i class="fab fa-facebook"></i></a>
+      <i class="fas fa-seedling" style="color:var(--accent); font-size:40px;"></i>
+      <a href="https://github.com/naimweb" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="mailto:naim@example.com"><i class="fas fa-envelope"></i></a>
+      <a href="https://www.linkedin.com/in/naimweb" target="_blank"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <div class="contact-form" style="margin-top:30px;">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea placeholder="Your Message" rows="4"></textarea>
+      <button type="submit">Send Message</button>
+    </div>
+  </div>
+</section>
+
+<p style ="text-align:center">
+  &copy;2025 Naim Shek. All Rights Reserved <span>'dev'</span>
+</p>
