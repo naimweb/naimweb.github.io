@@ -16,10 +16,3 @@ window.addEventListener('load', ()=>{
     el.style.width = el.style.width;
   });
 });
-</script>
-
-<!-- AOS JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-<script>
-  AOS.init({duration: 1000, once: true});
-</script>
